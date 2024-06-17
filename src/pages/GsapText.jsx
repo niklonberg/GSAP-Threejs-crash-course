@@ -1,5 +1,35 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useRef } from "react";
+
 const GsapText = () => {
-  // TODO: Implement gsap text animation
+  useGSAP(() => {
+    gsap.to("#text", {
+      // animate the text with id of text
+      ease: "power1.inOut",
+      opacity: 1,
+      y: 0,
+    });
+
+    gsap.fromTo(
+      ".para",
+      {
+        // animate the paragraphs with class of para
+        ease: "power1.inOut",
+        opacity: 0,
+        y: 20,
+      },
+      {
+        // end
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 1,
+        stagger: 0.3,
+      }
+    );
+  }, []);
 
   return (
     <main>
